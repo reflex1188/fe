@@ -1,4 +1,4 @@
-\package dev.jax.jaxclient;
+package dev.jax.jaxclient;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
