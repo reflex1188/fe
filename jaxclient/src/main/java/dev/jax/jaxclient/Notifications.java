@@ -1,4 +1,4 @@
-package dev.jax.jaxclient;
+\package dev.jax.jaxclient;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
@@ -45,6 +45,18 @@ final class Notifications {
             return;
         }
         TOASTS.add(new Toast(name, on, System.currentTimeMillis(), slotY(TOASTS.size())));
+        while (TOASTS.size() > MAX) {
+            TOASTS.remove(0);
+        }
+    }
+
+    /** Free-form notification for status messages such as armor warnings. */
+    static void info(String title, String message, String icon) {
+        if (!JaxClient.config().notifications) {
+            return;
+        }
+        TOASTS.add(new Toast(title + ": " + message, true,
+                System.currentTimeMillis(), slotY(TOASTS.size())));
         while (TOASTS.size() > MAX) {
             TOASTS.remove(0);
         }
